@@ -40,10 +40,15 @@ export class StoreComponent {
         this.changePage(1);
     }
 
-    // this is a method to return a range of page numbers, required to display navigation buttons
-    get pageNumbers(): number[] {
-        // create an array of the correct size and fill it with increasing integers
-        return Array(Math.ceil(this.repository.getProducts().length / this.productsPerPage)).fill(0).map((x, i) => i + 1);
+    // return the number of pages, feed this information to the counter directive within the html template
+    get pageCount(): number {
+        return Math.ceil(this.repository.getProducts(this.selectedCategory).length/this.productsPerPage);
     }
+
+    // this is a method to return a range of page numbers, required to display navigation buttons
+    // get pageNumbers(): number[] {
+    //     // create an array of the correct size and fill it with increasing integers
+    //     return Array(Math.ceil(this.repository.getProducts().length / this.productsPerPage)).fill(0).map((x, i) => i + 1);
+    // }
 
 }
