@@ -2,6 +2,8 @@
     <div class="row">
         <div class="col bg-dark text-white">
             <a class="navbar-brand">SPORTS STORE</a>
+            <!-- Display a summary of items in the cart -->
+            <cart-summary></cart-summary>
         </div>
     </div>
     <div class="row">
@@ -25,7 +27,14 @@
                         {{product.price | currency:"USD":"symbol":"2.2-2"}}
                     </span>
                 </h4>
-                <div class="card-text bg-white p-1">{{product.description}}</div>
+                <div class="card-text bg-white p-1">
+                    {{product.description}}
+                    <!-- Button to add something to cart -->
+                    <button class="btn btn-success btn-sm float-right"
+                        (click)="addProductToCart(product)">
+                        Add To Cart
+                    </button>
+                </div>
             </div>
             <!--Form to select how many products per page-->
             <div class="form-inline float-left mr-1">
@@ -36,6 +45,7 @@
                 </select>
             </div>
             <!--Buttons to navigate between product pages-->
+            <!--This implemenets the custom counter directive-->
             <div class="btn-group float-right">
                 <button *counter="let page of pageCount" (click)="changePage(page)"
                     class="btn btn-outline-primary"

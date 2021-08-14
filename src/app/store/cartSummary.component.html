@@ -1,0 +1,23 @@
+<!--HTML Template for the Cart Summary component, constructs a view-->
+<div class="float-right">
+    <small>
+        Your cart:
+        <!-- Use an ngIf to create a display if there are items in the cart -->
+        <span *ngIf="cart.itemCount > 0">
+            <!-- Display the number of items -->
+            {{cart.itemCount}} item(s)
+            <!-- Display the cart price as USD -->
+            {{cart.cartPrice | currency:"USD":"symbol":"2.2-2"}}
+        </span>
+        <!-- Otherwise say its empty -->
+        <span *ngIF="cart.itemCount == 0">
+            (empty)
+        </span>
+    </small>
+    <!-- Button to start checkout -->
+    <!-- Disable the button if the cart has nothing in it -->
+    <button class="btn btn-sm bg-dark text-white"
+        [disabled]="cart.itemCount == 0">
+        <i class="fa fa-shopping-cart"></i>
+    </button>
+</div>
