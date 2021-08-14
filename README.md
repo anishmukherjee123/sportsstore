@@ -1,6 +1,6 @@
 # SportsStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
+*Next Step*: URL Routing for add to cart. When adding something to the cart, take the user to a detailed cart summary page.
 
 ## Development server
 
