@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: "app",
-  template: "<store></store>"
+  // switched from <store> because now we are URL routing
+  template: "<router-outlet></router-outlet>"
 })
 export class AppComponent {
 }
