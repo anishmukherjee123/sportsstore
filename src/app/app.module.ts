@@ -7,6 +7,8 @@ import {CheckoutComponent} from './store/checkout.component'
 import {CartDetailComponent} from './store/cartDetail.component'
 // Angular module used to set up URL routing
 import {RouterModule} from '@angular/router'
+// class to prevent user from modifying their URL for routing
+import {StoreFirstGuard} from "./storeFirst.guard"
 
 @NgModule({
   declarations: [
