@@ -1,0 +1,69 @@
+<!-- Navigation Bar on top -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col bg-dark text-white">
+            <a class="navbar-brand">SPORTS STORE</a>
+        </div>
+    </div>
+</div>
+<!-- Table that displays what's in the cart -->
+<div class="row">
+    <div class="col mt-2">
+        <h2 class="text-center">Your Cart</h2>
+        <table class="table table-bordered table-striped p-2">
+            <!-- Table headers -->
+            <thead>
+                <tr>
+                    <th>Quantity</th>
+                    <th>Product</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Check the number of types of items in the cart -->
+                <tr *ngIf="cart.lines.length == 0">
+                    <td colspan="4" class="text-center">
+                        Your cart is empty.
+                    </td>
+                </tr>
+                <!-- Use an ngFor to display everything in the cart -->
+                <tr *ngFor="let line of cart.lines">
+                    <td>
+                        <!-- Form to let the user change the quantity of a type of item -->
+                        <input type="number" class="form-control-sm"
+                                style="width:5em"
+                                [value]="line.quantity"
+                                (change)="cart.updateQuantity(line.product, $event.target.value)"/>
+                    </td>
+                    <!-- Display the name of the product -->
+                    <td>{{line.product.name}}</td>
+                    <!-- Display the price -->
+                    <td class="text-right">
+                        {{line.product.price | currency:"USD":"symbol":"2.2-2"}}
+                    </td>
+                    <td class="text-right">
+                        {{(line.lineTotal) | currency:"USD":"symbol":"2.2-2"}}
+                    </td>
+                    <!-- Button to remove something from the cart -->
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-danger"
+                                (click)="cart.removeLine(line.product.id)">
+                            Remove
+                        </button>    
+                    </td>
+                </tr>
+            </tbody>
+            <!-- Display the total price of the cart in the footer -->
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total:</td>
+                    <td class="text-right">Total:</td>
+                    <td class="text-right">
+                        {{cart.cartPrice | currency:"USD":"symbol":"2.2-2"}}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

@@ -1,8 +1,14 @@
 // Represents a component to be displayed by the "/cart" URL
 import {Component} from "@angular/core";
+import {Cart} from "../model/cart.model"
 
 // Temporary placeholder to replace the cart detail page
 @Component({
-    template: `<div><h3 class="bg-info p-1 text-white">Cart Detail Component</h3></div>`
+    templateUrl: "cartDetail.component.html"
 })
-export class CartDetailComponent{}
+export class CartDetailComponent{
+    // cart is public so it can be modified
+    constructor(public cart: Cart) {
+
+    }
+}
