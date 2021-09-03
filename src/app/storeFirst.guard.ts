@@ -16,10 +16,13 @@ export class StoreFirstGuard{
 
     }
 
+    // method checks whether the snapshot of the route state matches the value of the internal variable,
+    // which is flipped once the route is taken
     canActivate(route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {
             if(this.firstNavigation) {
                 this.firstNavigation = false;
+                // return false if flipping back to the store component
                 if(route.component != StoreComponent) {
                     this.router.navigateByUrl("/");
                     return false;

@@ -19,17 +19,18 @@ import {StoreFirstGuard} from "./storeFirst.guard"
     // setting up URL routing
     RouterModule.forRoot([
       // store path + which component to use
-      {path: "store", component: StoreComponent},
+      {path: "store", component: StoreComponent, canActivate: [StoreFirstGuard]},
       // cart path
-      {path: "cart", component: CartDetailComponent},
+      {path: "cart", component: CartDetailComponent, canActivate: [StoreFirstGuard]},
       // checkout + which component to use
-      {path: "checkout", component: CheckoutComponent},
+      {path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuard]},
       // any other URL goes to store
       {path: "**", redirectTo: "/store"},
 
     ])
   ],
-  providers: [],
+  // lists all the services globally available in the app
+  providers: [StoreFirstGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
