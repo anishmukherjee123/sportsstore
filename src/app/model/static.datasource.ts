@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Product} from './product.model';
 import {Observable, from} from "rxjs";
+import {Order} from "./order.model"
 
 @Injectable() // declares that this class is used by angular as a service
 // this class provides the app with the data
@@ -24,5 +25,11 @@ export class StaticDataSource {
     // Observable represents an asynchronous task that produces a result at some point
     getProducts(): Observable<Product[]> {
         return from([this.products]);
+    }
+
+    // prints the order to the console for now
+    saveOrder(order: Order): Observable<Order> {
+        console.log(JSON.stringify(order));
+        return from([order]);
     }
 }
