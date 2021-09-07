@@ -24,9 +24,11 @@ import {StoreFirstGuard} from "./storeFirst.guard"
       {path: "cart", component: CartDetailComponent, canActivate: [StoreFirstGuard]},
       // checkout + which component to use
       {path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuard]},
+      // administrative features, only load them when necessary
+      {path: "admin", loadChildren: () => import("./admin/admin.module").then(m => m.AdminModule),
+        canActivate: [StoreFirstGuard]},
       // any other URL goes to store
-      {path: "**", redirectTo: "/store"},
-
+      {path: "**", redirectTo: "/store"}
     ])
   ],
   // lists all the services globally available in the app

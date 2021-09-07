@@ -16,6 +16,8 @@
             [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">
                 {{cat}}
             </button>
+            <!-- button to navigate to admin features -->
+            <button class="btn btn-block btn-danger mt-5" routerLink="/admin">Admin</button>
         </div>
         <div class="col-9 p-2">
             <!--Using ngFor to create a card for each product in the array products-->
