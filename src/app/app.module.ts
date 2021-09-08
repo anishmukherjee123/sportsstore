@@ -9,6 +9,8 @@ import {CartDetailComponent} from './store/cartDetail.component'
 import {RouterModule} from '@angular/router'
 // class to prevent user from modifying their URL for routing
 import {StoreFirstGuard} from "./storeFirst.guard"
+// used to assign JWT from HTTP request to a variable
+import {map} from "rxjs/operators";
 
 @NgModule({
   declarations: [

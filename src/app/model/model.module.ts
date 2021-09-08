@@ -6,6 +6,7 @@ import {Order} from "./order.model";
 import { OrderRepository } from './order.repository';
 import { RestDataSource } from './rest.datasource';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @NgModule({
     // adding things here registers the class as a service
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     // this is also because we are using DI (services)
     imports: [HttpClientModule],
     providers:[ProductRepository, StaticDataSource, Cart, Order, OrderRepository,
-    {provide: StaticDataSource, useClass: RestDataSource}]
+    {provide: StaticDataSource, useClass: RestDataSource},
+    RestDataSource, AuthService]
 })
 export class ModelModule{}

@@ -4,6 +4,7 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { AuthService } from "../model/auth.service";
 
 @Component({
     templateUrl: "auth.component.html"
@@ -14,14 +15,19 @@ export class AuthComponent {
     public password: string;
     public errorMessage: string;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private auth: AuthService) {
 
     }
 
     // use built in validation for now to route url if form is valid
     authenticate(form: NgForm) {
         if(form.valid) {
-            this.router.navigateByUrl("/admin/main");
+            this.auth.authenticate(this.username, this.password).subscribe(response => {
+                // once the Observable from authenticate updates, if it is true, go to the admin page
+                if(response) {
+                    this.router.navigateByUrl("/admin/main");
+                }
+            })
         } else {
             this.errorMessage = "Form Data Invalid";
         }
